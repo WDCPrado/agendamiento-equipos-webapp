@@ -51,9 +51,9 @@ const NavBar = () => {
       <div className="hidden md:block">
         <div className="md:absolute md:top-0 md:left-0 lg:absolute lg:top-0 lg:left-0">
           <Avatar
-            className="relative top-3 left-10 z-50"
+            className="relative top-3 left-10 z-50 cursor-pointer"
             onClick={() => {
-              router.push("/admin/home");
+              router.push("/admin");
             }}
           >
             <AvatarImage src="/images/logo.png" alt="unab" />
@@ -68,10 +68,10 @@ const NavBar = () => {
             className="sm:hidden"
           />
         </NavbarContent>
-        <NavbarBrand className="block md:hidden lg:hidden">
+        <NavbarBrand className="block md:hidden lg:hidden cursor-pointer">
           <Avatar
             onClick={() => {
-              router.push("/admin/home");
+              router.push("/admin");
             }}
           >
             <AvatarImage src="/images/logo.png" alt="unab" />
@@ -147,9 +147,9 @@ const NavBar = () => {
         <NavbarMenu>
           <NavbarMenuItem>
             <Link
-              href="/admin/home"
+              href="/admin"
               className={`text-xl ${
-                pathname === "/admin/home" ? "text-red-600" : "foreground"
+                pathname === "/admin" ? "text-red-600" : "foreground"
               }`}
             >
               Inicio
