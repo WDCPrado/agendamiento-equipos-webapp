@@ -33,9 +33,10 @@ const RecordsPage = async () => {
       day: "2-digit",
       hour: "2-digit",
       minute: "2-digit",
+      timeZone: "America/Santiago",
     };
 
-    return new Intl.DateTimeFormat("es-ES", options).format(date);
+    return new Intl.DateTimeFormat("es-CL", options).format(date);
   }
 
   return (
