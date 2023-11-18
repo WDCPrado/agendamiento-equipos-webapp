@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
 
   const body = await req.json();
   const { user_rut, pc_code } = body;
-  console.log(body);
+  //console.log(body);
 
   try {
     const student = await prismadb.user.findUnique({

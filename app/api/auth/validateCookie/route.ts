@@ -1,11 +1,8 @@
 import { verify } from "jsonwebtoken";
-import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET() {
-  const cookieStore = cookies();
-
-  const token = cookieStore.get("session");
+async function validateCookie(req: NextRequest) {
+  const token = req.cookies.get("session");
 
   if (!token) {
     return NextResponse.json(
@@ -40,3 +37,5 @@ export async function GET() {
     );
   }
 }
+
+export { validateCookie as GET };

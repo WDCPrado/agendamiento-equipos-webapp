@@ -3,14 +3,19 @@ import { UsersColum } from "./components/columns";
 import { UsersClient } from "./components/client";
 import { getUser } from "@/lib/serverUtils";
 import { redirect } from "next/navigation";
+import Loading from "@/app/loading";
 
 const UsersPage = async () => {
   const user = getUser();
 
   if (user?.role === "ADMIN") {
-    const users = await prismadb.user.findMany();
+    const users = await prismadb.user.findMany({
+      orderBy: {
+        created_at: "desc",
+      },
+    });
     if (!users) {
-      return null;
+      return <Loading />;
     }
     const formattedUsers: UsersColum[] = users.map((item) => ({
       id: item.id,
@@ -33,9 +38,12 @@ const UsersPage = async () => {
       where: {
         role: "ENCARGADO",
       },
+      orderBy: {
+        created_at: "desc",
+      },
     });
     if (!users) {
-      return null;
+      return <Loading />;
     }
     const formattedUsers: UsersColum[] = users.map((item) => ({
       id: item.id,
@@ -57,9 +65,12 @@ const UsersPage = async () => {
       where: {
         role: "ESTUDIANTE",
       },
+      orderBy: {
+        created_at: "desc",
+      },
     });
     if (!users) {
-      return null;
+      return <Loading />;
     }
     const formattedUsers: UsersColum[] = users.map((item) => ({
       id: item.id,

@@ -4,7 +4,7 @@ import { Laboratory, Pc } from "@prisma/client";
 import axios from "axios";
 import { Trash } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
 import { AlertModal } from "@/components/modals/alert-modal";
@@ -217,9 +217,9 @@ export const LaboratoriesForm: React.FC<LaboratoryFormProps> = ({
   const toastMessage = initialData
     ? "laboratorio modificado."
     : "laboratorio creado.";
-  const action = initialData ? "Guardar" : "Crear";
 
   const onSubmit = async () => {
+    console.log(initialData);
     try {
       setLoading(true);
 
@@ -263,6 +263,22 @@ export const LaboratoriesForm: React.FC<LaboratoryFormProps> = ({
       setOpen(false);
     }
   };
+  const [user, setUser] = useState<any | null>(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const user = await axios.get("/api/auth/validateCookie");
+        //console.log(user);
+        setUser(user);
+      } catch (error) {
+        toast.error("Error al obtener el usuario.");
+      }
+    };
+
+    if (!user) {
+      fetchData();
+    }
+  }, [user]);
 
   return (
     <>
@@ -275,7 +291,7 @@ export const LaboratoriesForm: React.FC<LaboratoryFormProps> = ({
 
       <div className="flex items-center justify-between">
         <Heading title={title} description={description} />
-        {initialData && (
+        {initialData && user?.role === "JEFE" && (
           <Button
             disabled={loading}
             variant="destructive"

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -17,12 +17,34 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LogOutButton } from "./LogOutButton";
 import { ThemeToggle } from "./theme-toggle";
+import axios from "axios";
+import toast from "react-hot-toast";
+import Loading from "@/app/loading";
 
-const NavBar = (user: any) => {
+const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const pathname = usePathname();
 
+  const [user, setUser] = useState<any | null>(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const user = await axios.get("/api/auth/validateCookie");
+        setUser(user.data);
+      } catch (error) {
+        toast.error("Error al obtener el usuario.");
+      }
+    };
+
+    if (!user) {
+      fetchData();
+    }
+  }, [user]);
+
+  if (!user) {
+    return <Loading />;
+  }
   return (
     <>
       <div className="hidden md:block">
@@ -57,9 +79,9 @@ const NavBar = (user: any) => {
         >
           <NavbarItem>
             <Link
-              href="/admin/home"
+              href="/admin"
               className={`text-xl ${
-                pathname === "/admin/home" ? "text-red-600" : "foreground"
+                pathname === "/admin" ? "text-red-600" : "foreground"
               }`}
             >
               Inicio
@@ -77,7 +99,7 @@ const NavBar = (user: any) => {
             </Link>
           </NavbarItem>
 
-          {user.user.role !== "ADMIN" && (
+          {user.role !== "ADMIN" && (
             <>
               <NavbarItem>
                 <Link
@@ -120,9 +142,9 @@ const NavBar = (user: any) => {
         <NavbarMenu>
           <NavbarMenuItem>
             <Link
-              href="/admin/home"
+              href="/admin"
               className={`text-xl ${
-                pathname === "/admin/home" ? "text-red-600" : "foreground"
+                pathname === "/admin" ? "text-red-600" : "foreground"
               }`}
             >
               Inicio
@@ -139,7 +161,7 @@ const NavBar = (user: any) => {
             </Link>
           </NavbarMenuItem>
 
-          {user.user.role !== "ADMIN" && (
+          {user.role !== "ADMIN" && (
             <>
               <NavbarMenuItem>
                 <Link
@@ -173,7 +195,7 @@ const NavBar = (user: any) => {
       <div className="hidden lg:block md:block absolute top-0 right-0">
         <div className="relative top-3 right-10 z-50">
           <div className="flex gap-3 items-center">
-            <p>{user.user.name}</p>
+            <p>{user.name}</p>
             <ThemeToggle />
             <LogOutButton />
           </div>

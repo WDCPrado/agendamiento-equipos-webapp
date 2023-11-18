@@ -66,6 +66,7 @@ export async function DELETE(
   }
 
   try {
+    await prismadb.record.deleteMany({ where: { pc_code: params.pc_id } });
     const pc = await prismadb.pc.delete({
       where: { id: params.pc_id },
     });

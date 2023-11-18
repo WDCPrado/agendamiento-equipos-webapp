@@ -29,7 +29,6 @@ export const RecordsClient: React.FC<RecordsClientProps> = async ({ data }) => {
           <Plus className="mr-2 h-4 w-4" /> Prestar o devolver
         </Button>
       </div>
-      <Separator />
       <DataTable
         searchKey="rut"
         searchPlaceHolder="Buscar prestamo por rut"

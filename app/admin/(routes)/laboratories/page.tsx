@@ -5,7 +5,7 @@ import { LaboratoryColumn } from "./components/columns";
 const LaboratoriesPage = async () => {
   const laboratories = await prismadb.laboratory.findMany({
     orderBy: {
-      number: "asc", // Ordenar por número en orden ascendente
+      number: "asc",
     },
   });
 

@@ -9,7 +9,7 @@ export type RecordsColumn = {
   loan_date: any;
   return_date: any;
   rut: string;
-  barcode: string;
+  barcode: string | null | undefined;
 };
 
 export const columns: ColumnDef<RecordsColumn>[] = [

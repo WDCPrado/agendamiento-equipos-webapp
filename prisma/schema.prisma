@@ -64,8 +64,8 @@ model Record {
   user_rut String
   user     User   @relation(fields: [user_rut], references: [rut])
 
-  pc_code String
-  pc      Pc     @relation(fields: [pc_code], references: [barcode])
+  pc_code String?
+  pc      Pc?     @relation(fields: [pc_code], references: [barcode])
 
   @@index([user_rut])
   @@index([pc_code])

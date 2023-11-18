@@ -31,7 +31,7 @@ export const LaboratoryClient: React.FC<LaboratoryClientProps> = async ({
           <Plus className="mr-2 h-4 w-4" /> Agregar Nuevo
         </Button>
       </div>
-      <Separator />
+
       <DataTable
         searchKey="number"
         searchPlaceHolder="Buscar laboratorio por numero"

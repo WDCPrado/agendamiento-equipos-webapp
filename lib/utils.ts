@@ -2,7 +2,7 @@ import axios from "axios";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-export function cn(...inputs: ClassValue[]) {
+function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
@@ -72,4 +72,4 @@ function timeout(ms: any) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export { mapLaboratoriesData, mapPcsData, formatedRut, timeout };
+export { mapLaboratoriesData, mapPcsData, formatedRut, timeout, cn };

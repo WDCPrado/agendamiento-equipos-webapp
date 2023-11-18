@@ -11,6 +11,7 @@ const LaboratoriesPage = async ({
     where: {
       id: params.laboratory_id,
     },
+
     include: {
       pcs: true,
     },

@@ -222,6 +222,7 @@ export const UsersForm: React.FC<UserFormProps> = ({ initialData, user }) => {
                   <FormLabel>RUT</FormLabel>
                   <FormControl>
                     <Input
+                      disabled={loading}
                       placeholder="RUT"
                       type="text"
                       {...field}
@@ -275,6 +276,7 @@ export const UsersForm: React.FC<UserFormProps> = ({ initialData, user }) => {
           </div>
           <div className="flex gap-3">
             <Button
+              variant={"outline"}
               disabled={loading}
               type="button"
               onClick={() => {
@@ -284,9 +286,9 @@ export const UsersForm: React.FC<UserFormProps> = ({ initialData, user }) => {
               Cancelar
             </Button>
 
-            <Button disabled={loading} type="submit">
+            <Button disabled={loading} type="submit" className="w-[180px]">
               {loading ? (
-                <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+                <ReloadIcon className="h-4 w-4 animate-spin" />
               ) : (
                 action
               )}

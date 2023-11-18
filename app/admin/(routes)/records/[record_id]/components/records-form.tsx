@@ -194,6 +194,7 @@ export const RecordsForm: React.FC<RecordsFormProps> = ({ initialData }) => {
           </div>
           <div className="flex gap-3">
             <Button
+              variant={"outline"}
               disabled={loading}
               type="button"
               onClick={() => {
@@ -203,7 +204,7 @@ export const RecordsForm: React.FC<RecordsFormProps> = ({ initialData }) => {
               Volver
             </Button>
 
-            <Button disabled={loading} type="submit">
+            <Button disabled={loading} type="submit" className="w-1/4">
               {loading ? (
                 <ReloadIcon className="h-4 w-4 animate-spin" />
               ) : (

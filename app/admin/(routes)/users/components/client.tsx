@@ -31,7 +31,7 @@ export const UsersClient: React.FC<UsersClientProps> = ({ data, user }) => {
           </Button>
         )}
       </div>
-      <Separator />
+
       <DataTable
         searchKey="rut"
         searchPlaceHolder="Buscar usuario por rut"
