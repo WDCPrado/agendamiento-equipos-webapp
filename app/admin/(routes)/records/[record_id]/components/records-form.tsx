@@ -35,7 +35,7 @@ interface RecordsFormProps {
     loan_date: any;
     return_date: any;
     user: User;
-    pc: Pc; // Un arreglo de objetos de tipo Pc
+    pc: Pc | null; // Un arreglo de objetos de tipo Pc
   } | null;
 }
 
@@ -53,7 +53,7 @@ export const RecordsForm: React.FC<RecordsFormProps> = ({ initialData }) => {
     defaultValues: initialData
       ? {
           user_rut: initialData?.user.rut,
-          pc_code: initialData?.pc.barcode,
+          pc_code: initialData?.pc?.barcode,
         }
       : {
           user_rut: "",
