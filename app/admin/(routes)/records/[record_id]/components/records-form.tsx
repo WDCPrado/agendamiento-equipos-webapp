@@ -91,9 +91,6 @@ export const RecordsForm: React.FC<RecordsFormProps> = ({ initialData }) => {
       //router.push(`/admin/records/new`);
       form.reset();
       toast.success(prestamo.data.message);
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
     } catch (error: any) {
       toast.error("Algo salió mal.");
     } finally {
