@@ -106,7 +106,7 @@ export const LaboratoriesForm: React.FC<LaboratoryFormProps> = ({
           name: form.getValues("name"),
           model: form.getValues("model"),
           brand: form.getValues("brand"),
-          status: form.getValues("status") === "1" ? true : false,
+          status: form.getValues("status") === "1" ? false : true,
           laboratory_id: params.laboratory_id.toString(),
         },
         {

@@ -2,6 +2,7 @@ import prismadb from "@/lib/prismadb";
 import { RecordsClient } from "./components/client";
 import { RecordsColumn } from "./components/columns";
 
+export const revalidate = 1;
 const RecordsPage = async () => {
   const records = await prismadb.record.findMany({
     orderBy: {
