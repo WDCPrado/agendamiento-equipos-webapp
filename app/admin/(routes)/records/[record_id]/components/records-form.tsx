@@ -87,7 +87,7 @@ export const RecordsForm: React.FC<RecordsFormProps> = ({ initialData }) => {
       );
 
       router.refresh();
-      //router.push(`/admin/records`);
+      router.push(`/admin/records/new`);
       form.reset();
       toast.success(prestamo.data.message);
     } catch (error: any) {
