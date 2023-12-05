@@ -3,6 +3,7 @@ import { RecordsClient } from "./components/client";
 import { RecordsColumn } from "./components/columns";
 
 export const revalidate = 1;
+export const dynamic = "force-dynamic";
 const RecordsPage = async () => {
   const records = await prismadb.record.findMany({
     orderBy: {
