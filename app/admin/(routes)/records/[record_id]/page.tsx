@@ -1,8 +1,8 @@
 import prismadb from "@/lib/prismadb";
 
 import { RecordsForm } from "./components/records-form";
-import { getUser } from "@/lib/serverUtils";
-import { redirect } from "next/navigation";
+
+export const revalidate = 1;
 
 const RecordsPage = async ({ params }: { params: { record_id: string } }) => {
   const record = await prismadb.record.findUnique({
