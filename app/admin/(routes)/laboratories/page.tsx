@@ -2,6 +2,7 @@ import prismadb from "@/lib/prismadb";
 import { LaboratoryClient } from "./components/client";
 import { LaboratoryColumn } from "./components/columns";
 
+export const dynamic = "force-dynamic";
 const LaboratoriesPage = async () => {
   const laboratories = await prismadb.laboratory.findMany({
     orderBy: {

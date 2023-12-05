@@ -5,6 +5,7 @@ import { getUser } from "@/lib/serverUtils";
 import { redirect } from "next/navigation";
 import Loading from "@/app/loading";
 
+export const dynamic = "force-dynamic";
 const UsersPage = async () => {
   const user = getUser();
 
